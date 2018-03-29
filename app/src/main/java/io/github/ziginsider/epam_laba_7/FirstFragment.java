@@ -22,11 +22,11 @@ public class FirstFragment extends Fragment {
 
         if (savedInstanceState != null) {
             color = savedInstanceState.getInt(KEY_COLOR);
-            Log.d(TAG, "FirstFragment::onCreate: savedInstaceState isn't null");
+            Log.d(TAG, "FirstFragment::onCreate: savedInstanceState != null");
             Log.d(TAG, "FirstFragment::onCreate: color = " + color);
         } else {
             color = RandomColor.generateNewColor();
-            Log.d(TAG, "FirstFragment::onCreate: savedInstaceState is null");
+            Log.d(TAG, "FirstFragment::onCreate: savedInstanceState == null");
             Log.d(TAG, "FirstFragment::onCreate: color = " + color);
         }
     }
@@ -37,7 +37,7 @@ public class FirstFragment extends Fragment {
         View fragmentView = inflater.inflate(R.layout.fragment_first, container, false);
         frameLayout = fragmentView.findViewById(R.id.frame_first_fragment);
         frameLayout.setBackgroundColor(color);
-        Log.d(TAG, "FirstFragment::onCreateView");
+        Log.d(TAG, "FirstFragment::onCreateView: color = " + color);
         return fragmentView;
     }
 
@@ -45,5 +45,6 @@ public class FirstFragment extends Fragment {
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt(KEY_COLOR, color);
+        Log.d(TAG, "FirstFragment::onSaveInstanceState: color = " + color);
     }
 }

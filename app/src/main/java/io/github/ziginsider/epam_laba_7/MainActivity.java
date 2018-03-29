@@ -31,9 +31,8 @@ public class MainActivity extends AppCompatActivity {
             counter = savedInstanceState.getInt(KEY_COUNTER);
         } else {
             counter = 1;
+            changeFragment();
         }
-
-        changeFragment();
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
