@@ -45,8 +45,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void changeFragment() {
-        int fragmentNumber = counter % 3;
-        switch (fragmentNumber) {
+        switch (counter % 3) {
             case 1:
                 setFragment(new FirstFragment());
                 break;
@@ -61,9 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
-
-        FragmentTransaction fragmentTransaction =
-                fragmentManager.beginTransaction();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.activity_layout, fragment);
         fragmentTransaction.commit();
     }
@@ -71,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         outState.putInt(KEY_COUNTER, counter);
-        Log.d(TAG, "onSaveInstanceState: MainActivity");
+        Log.d(TAG, "MainActivity::onSaveInstanceState");
         super.onSaveInstanceState(outState);
     }
 }
