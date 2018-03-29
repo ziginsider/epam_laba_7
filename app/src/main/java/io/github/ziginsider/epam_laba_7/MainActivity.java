@@ -10,6 +10,11 @@ import android.util.Log;
 import android.view.View;
 
 /**
+ * Activity that displays Fragments with random background color.
+ *
+ * <p>By pressing the floating button the previous Fragment is replaced into next Fragment.
+ * Fragments are changed cyclically.
+ *
  * @author Alex Kisel
  * @since 2018-03-29
  */
@@ -62,6 +67,11 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
+    /**
+     * Saves {@link MainActivity#counter} to take needed Fragment
+     *
+     * @param outState - Bundle of {@link MainActivity}
+     */
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         outState.putInt(KEY_COUNTER, counter);

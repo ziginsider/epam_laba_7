@@ -5,13 +5,19 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 
+/**
+ * Second Fragment with random background color.
+ *
+ * <p>Color is saved during screen rotation.
+ *
+ * @author Alex Kisel
+ * @since 2018-03-29
+ */
 public class SecondFragment extends Fragment {
     private static final String KEY_COLOR = "color_second";
 
     private int color;
-    private FrameLayout frameLayout;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -27,8 +33,7 @@ public class SecondFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View fragmentView = inflater.inflate(R.layout.fragment_second, container, false);
-        frameLayout = fragmentView.findViewById(R.id.frame_second_fragment);
-        frameLayout.setBackgroundColor(color);
+        fragmentView.findViewById(R.id.frame_second_fragment).setBackgroundColor(color);
         return fragmentView;
     }
 
