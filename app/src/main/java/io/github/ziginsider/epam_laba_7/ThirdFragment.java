@@ -12,8 +12,8 @@ public class ThirdFragment extends Fragment {
 
     private String color;
 
-    public static FirstFragment newInstance(String color) {
-        FirstFragment fragment = new FirstFragment();
+    public static ThirdFragment newInstance(String color) {
+        ThirdFragment fragment = new ThirdFragment();
         Bundle args = new Bundle();
         args.putString(COLOR, color);
         fragment.setArguments(args);
@@ -31,6 +31,6 @@ public class ThirdFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_second, container, false);
+        return inflater.inflate(R.layout.fragment_third, container, false);
     }
 }

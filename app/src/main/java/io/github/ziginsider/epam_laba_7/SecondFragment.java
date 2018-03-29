@@ -12,8 +12,8 @@ public class SecondFragment extends Fragment {
 
     private String color;
 
-    public static FirstFragment newInstance(String color) {
-        FirstFragment fragment = new FirstFragment();
+    public static SecondFragment newInstance(String color) {
+        SecondFragment fragment = new SecondFragment();
         Bundle args = new Bundle();
         args.putString(COLOR, color);
         fragment.setArguments(args);
