@@ -2,35 +2,48 @@ package io.github.ziginsider.epam_laba_7;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
 public class FirstFragment extends Fragment {
 
-    private static final String COLOR = "color";
+    private static final String TAG = FirstFragment.class.getSimpleName();
+    private static final String KEY_COLOR = "color";
 
-    private String color;
-
-    public static FirstFragment newInstance(String color) {
-        FirstFragment fragment = new FirstFragment();
-        Bundle args = new Bundle();
-        args.putString(COLOR, color);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    private int color;
+    private FrameLayout frameLayout;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            color = getArguments().getString(COLOR);
+
+        if (savedInstanceState != null) {
+            color = savedInstanceState.getInt(KEY_COLOR);
+            Log.d(TAG, "FirstFragment::onCreate: savedInstaceState isn't null");
+            Log.d(TAG, "FirstFragment::onCreate: color = " + color);
+        } else {
+            color = RandomColor.generateNewColor();
+            Log.d(TAG, "FirstFragment::onCreate: savedInstaceState is null");
+            Log.d(TAG, "FirstFragment::onCreate: color = " + color);
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_first, container, false);
+        View fragmentView = inflater.inflate(R.layout.fragment_first, container, false);
+        frameLayout = fragmentView.findViewById(R.id.frame_first_fragment);
+        frameLayout.setBackgroundColor(color);
+        Log.d(TAG, "FirstFragment::onCreateView");
+        return fragmentView;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(KEY_COLOR, color);
     }
 }
