@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">epam_laba_7</string>
+    <string name="hello_blank_fragment">I'm first fragment</string>
 </resources>
