@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">epam_laba_7</string>
-    <string name="hello_blank_fragment">I'm first fragment</string>
+    <string name="hello_blank_fragment">I\'m first fragment</string>
+    <string name="hello_blank_fragment_second">I\'m second fragment</string>
+    <string name="hello_blank_fragment_third">I\'m third fragment</string>
 </resources>
