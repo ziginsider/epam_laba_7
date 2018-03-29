@@ -12,4 +12,11 @@
         android:textSize="30sp"
         android:text="@string/hello_blank_fragment" />
 
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/first_pic" />
+
 </FrameLayout>

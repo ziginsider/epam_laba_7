@@ -1,10 +1,10 @@
 package io.github.ziginsider.epam_laba_7;
 
 import android.graphics.Color;
+
 import java.util.Random;
 
 public class RandomColor {
-
     private static Random rnd;
 
     public static int generateNewColor() {

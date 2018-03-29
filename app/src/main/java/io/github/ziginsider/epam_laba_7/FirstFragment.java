@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 public class FirstFragment extends Fragment {
-
     private static final String TAG = FirstFragment.class.getSimpleName();
     private static final String KEY_COLOR = "color";
 

@@ -1,6 +1,5 @@
 package io.github.ziginsider.epam_laba_7;
 
-import android.content.res.ColorStateList;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -11,12 +10,10 @@ import android.util.Log;
 import android.view.View;
 
 /**
- *
  * @author Alex Kisel
  * @since 2018-03-29
  */
 public class MainActivity extends AppCompatActivity {
-
     private static final String KEY_COUNTER = "key_counter";
     private static final String TAG = MainActivity.class.getSimpleName();
 

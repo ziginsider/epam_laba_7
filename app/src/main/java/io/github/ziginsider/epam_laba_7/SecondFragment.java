@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 public class SecondFragment extends Fragment {
-
     private static final String KEY_COLOR = "color_second";
 
     private int color;
