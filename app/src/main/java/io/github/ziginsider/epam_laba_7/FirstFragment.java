@@ -1,16 +1,9 @@
 package io.github.ziginsider.epam_laba_7;
 
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 /**
  * First Fragment with random background color.
  *
- * <p>Color is saved during screen rotation.
+ * <p>See base functionality in {@link AbstractFragment}
  *
  * @author Alex Kisel
  * @since 2018-03-29
