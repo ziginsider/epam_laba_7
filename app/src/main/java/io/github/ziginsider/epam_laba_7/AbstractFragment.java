@@ -5,13 +5,14 @@ import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 /**
  * Abstract Fragment with random background color. Implements base functionality for Fragments
- *
+ * <p>
  * <p>Color is saved during screen rotation.
  *
  * @author Alex Kisel

@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.activity_layout, fragment);
+        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
 
@@ -77,5 +78,12 @@ public class MainActivity extends AppCompatActivity {
         outState.putInt(KEY_COUNTER, counter);
         Log.d(TAG, "MainActivity::onSaveInstanceState");
         super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public void onBackPressed() {
+        counter--;
+        if (counter == 0) finish();
+        super.onBackPressed();
     }
 }
