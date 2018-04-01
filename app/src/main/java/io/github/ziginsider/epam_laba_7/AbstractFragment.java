@@ -1,8 +1,7 @@
 package io.github.ziginsider.epam_laba_7;
 
+import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.IdRes;
-import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -12,7 +11,7 @@ import android.view.ViewGroup;
 
 /**
  * Abstract Fragment with random background color. Implements base functionality for Fragments
- * <p>
+ *
  * <p>Color is saved during screen rotation.
  *
  * @author Alex Kisel
@@ -22,20 +21,32 @@ public abstract class AbstractFragment extends Fragment {
     private static final String KEY_COLOR = "color";
 
     private int color;
-    @LayoutRes
-    private int layout;
-    @IdRes
-    private int idColorView;
 
-    public AbstractFragment(int layout, int idColorView) {
-        this.layout = layout;
-        this.idColorView = idColorView;
-    }
+    /**
+     * Returns TAG for logCat
+     *
+     * @return TAG
+     */
+    protected abstract String getChildTag();
+
+    /**
+     * Returns inflated layout
+     *
+     * @return id res layout
+     */
+    protected abstract int getLayout();
+
+    /**
+     * Returns colored view
+     *
+     * @return id res view
+     */
+    protected abstract int getIdColoredView();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        Log.d(getChildTag(), "[onCreate]");
         if (savedInstanceState != null) {
             color = savedInstanceState.getInt(KEY_COLOR);
         } else {
@@ -47,18 +58,63 @@ public abstract class AbstractFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(layout, container, false);
+        Log.d(getChildTag(), "[onCreateView]");
+        return inflater.inflate(getLayout(), container, false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        Log.d(getChildTag(), "[onViewCreated]");
         super.onViewCreated(view, savedInstanceState);
-        view.findViewById(idColorView).setBackgroundColor(color);
+        view.findViewById(getIdColoredView()).setBackgroundColor(color);
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
+        Log.d(getChildTag(), "[onSaveInstanceState]");
         super.onSaveInstanceState(outState);
         outState.putInt(KEY_COLOR, color);
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        Log.d(getChildTag(), "[onAttach]");
+        super.onAttach(context);
+    }
+
+    @Override
+    public void onPause() {
+        Log.d(getChildTag(), "[onPause]");
+        super.onPause();
+    }
+
+    @Override
+    public void onStop() {
+        Log.d(getChildTag(), "[onStop]");
+        super.onStop();
+    }
+
+    @Override
+    public void onResume() {
+        Log.d(getChildTag(), "[onResume]");
+        super.onResume();
+    }
+
+    @Override
+    public void onDestroyView() {
+        Log.d(getChildTag(), "[onDestroyView]");
+        super.onDestroyView();
+    }
+
+    @Override
+    public void onDestroy() {
+        Log.d(getChildTag(), "[onDestroy]");
+        super.onDestroy();
+    }
+
+    @Override
+    public void onDetach() {
+        Log.d(getChildTag(), "[onDetach]");
+        super.onDetach();
     }
 }

@@ -9,7 +9,20 @@ package io.github.ziginsider.epam_laba_7;
  * @since 2018-03-29
  */
 public class ThirdFragment extends AbstractFragment {
-    public ThirdFragment() {
-        super(R.layout.fragment_third, R.id.frame_third_fragment);
+    private static final String TAG = ThirdFragment.class.getSimpleName();
+
+    @Override
+    protected String getChildTag() {
+        return TAG;
+    }
+
+    @Override
+    protected int getLayout() {
+        return R.layout.fragment_third;
+    }
+
+    @Override
+    protected int getIdColoredView() {
+        return R.id.frame_third_fragment;
     }
 }
