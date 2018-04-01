@@ -46,10 +46,13 @@ public abstract class AbstractFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View fragmentView = inflater.inflate(layout, container, false);
-        fragmentView.findViewById(idColorView).setBackgroundColor(color);
-        return fragmentView;
+        return inflater.inflate(layout, container, false);
+    }
 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        view.findViewById(idColorView).setBackgroundColor(color);
     }
 
     @Override
