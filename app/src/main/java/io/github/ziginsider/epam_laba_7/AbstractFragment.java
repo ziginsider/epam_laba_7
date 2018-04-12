@@ -22,7 +22,6 @@ public abstract class AbstractFragment extends Fragment {
     private static final String KEY_COLOR = "color";
 
     private int color;
-    private String name;
 
     /**
      * Returns TAG for logCat
