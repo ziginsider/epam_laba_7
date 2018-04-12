@@ -55,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
                 showFragment(MainFragment.newInstance(RandomColor.generateNewColor(),
                         R.drawable.second_pic,
                         "I'm second Fragment"));
-
                 break;
             case 0:
                 showFragment(MainFragment.newInstance(RandomColor.generateNewColor(),
@@ -88,7 +87,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         counter--;
-        if (getSupportFragmentManager().getBackStackEntryCount() == 1) finish();
+        if (getSupportFragmentManager().getBackStackEntryCount() == 1)
+            finish();
         super.onBackPressed();
     }
 }
