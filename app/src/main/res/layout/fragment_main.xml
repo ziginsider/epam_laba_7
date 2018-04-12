@@ -1,22 +1,24 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frame_third_fragment"
+    android:id="@+id/frame_main_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="io.github.ziginsider.epam_laba_7.ThirdFragment">
+    tools:context="io.github.ziginsider.epam_laba_7.MainFragment">
 
     <TextView
+        android:id="@+id/fragment_text_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:text="@string/hello_blank_fragment_third"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        android:text="@string/hello_blank_fragment" />
 
     <ImageView
+        android:id="@+id/fragment_image_view"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
         android:layout_marginTop="70dp"
-        android:background="@drawable/third_pic" />
+        android:background="@drawable/first_pic" />
 
 </FrameLayout>

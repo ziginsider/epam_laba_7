@@ -18,10 +18,11 @@ import android.view.View;
  * @since 2018-03-29
  */
 public class MainActivity extends AppCompatActivity {
-    private static final String KEY_COUNTER = "key_counter";
     private static final String TAG = MainActivity.class.getSimpleName();
+    private static final String KEY_COUNTER = "key_counter";
 
-    private int counter;
+    private FloatingActionButton fab;
+    private int counter = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,35 +32,40 @@ public class MainActivity extends AppCompatActivity {
         if (savedInstanceState != null) {
             counter = savedInstanceState.getInt(KEY_COUNTER);
         } else {
-            counter = 1;
             changeFragment();
         }
 
-        FloatingActionButton fab = findViewById(R.id.fab);
+        fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                counter++;
                 changeFragment();
             }
         });
     }
 
     private void changeFragment() {
-        switch (counter % 3) {
+        switch (++counter % 3) {
             case 1:
-                setFragment(new FirstFragment());
+                showFragment(MainFragment.newInstance(RandomColor.generateNewColor(),
+                        R.drawable.first_pic,
+                        "I'm first Fragment"));
                 break;
             case 2:
-                setFragment(new SecondFragment());
+                showFragment(MainFragment.newInstance(RandomColor.generateNewColor(),
+                        R.drawable.second_pic,
+                        "I'm second Fragment"));
+
                 break;
             case 0:
-                setFragment(new ThirdFragment());
+                showFragment(MainFragment.newInstance(RandomColor.generateNewColor(),
+                        R.drawable.third_pic,
+                        "I'm third Fragment"));
                 break;
         }
     }
 
-    private void setFragment(Fragment fragment) {
+    private void showFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.activity_layout, fragment)
@@ -74,15 +80,15 @@ public class MainActivity extends AppCompatActivity {
      */
     @Override
     protected void onSaveInstanceState(Bundle outState) {
+        Log.i(TAG, "MainActivity::onSaveInstanceState");
         outState.putInt(KEY_COUNTER, counter);
-        Log.d(TAG, "MainActivity::onSaveInstanceState");
         super.onSaveInstanceState(outState);
     }
 
     @Override
     public void onBackPressed() {
         counter--;
-        if (counter == 0) finish();
+        if (getSupportFragmentManager().getBackStackEntryCount() == 1) finish();
         super.onBackPressed();
     }
 }

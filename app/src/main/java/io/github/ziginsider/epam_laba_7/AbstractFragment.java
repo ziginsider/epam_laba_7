@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 /**
  * Abstract Fragment with random background color. Implements base functionality for Fragments
@@ -21,6 +22,7 @@ public abstract class AbstractFragment extends Fragment {
     private static final String KEY_COLOR = "color";
 
     private int color;
+    private String name;
 
     /**
      * Returns TAG for logCat
@@ -43,14 +45,49 @@ public abstract class AbstractFragment extends Fragment {
      */
     protected abstract int getIdColoredView();
 
+    /**
+     * Returns text view by name of fragment
+     *
+     * @return id res view
+     */
+    protected abstract int getIdTextView();
+
+    /**
+     * Returns image view by fragment
+     *
+     * @return id res view
+     */
+    protected abstract int getIdImageView();
+
+    /**
+     * Returns fragment color
+     *
+     * @return fragment color
+     */
+    protected abstract int getColor();
+
+    /**
+     * Returns fragment name
+     *
+     * @return fragment name
+     */
+    protected abstract String getName();
+
+    /**
+     * Returns fragment picture
+     *
+     * @return id res drawable
+     */
+    protected abstract int getPic();
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
+        Log.i(getChildTag(), "[onCreate]");
         super.onCreate(savedInstanceState);
-        Log.d(getChildTag(), "[onCreate]");
         if (savedInstanceState != null) {
             color = savedInstanceState.getInt(KEY_COLOR);
         } else {
-            color = RandomColor.generateNewColor();
+            color = getColor();
         }
     }
 
@@ -58,63 +95,66 @@ public abstract class AbstractFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        Log.d(getChildTag(), "[onCreateView]");
+        Log.i(getChildTag(), "[onCreateView]");
         return inflater.inflate(getLayout(), container, false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        Log.d(getChildTag(), "[onViewCreated]");
+        Log.i(getChildTag(), "[onViewCreated]");
         super.onViewCreated(view, savedInstanceState);
         view.findViewById(getIdColoredView()).setBackgroundColor(color);
+        TextView textView = view.findViewById(getIdTextView());
+        textView.setText(getName());
+        view.findViewById(getIdImageView()).setBackgroundResource(getPic());
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        Log.d(getChildTag(), "[onSaveInstanceState]");
+        Log.i(getChildTag(), "[onSaveInstanceState]");
         super.onSaveInstanceState(outState);
         outState.putInt(KEY_COLOR, color);
     }
 
     @Override
     public void onAttach(Context context) {
-        Log.d(getChildTag(), "[onAttach]");
+        Log.i(getChildTag(), "[onAttach]");
         super.onAttach(context);
     }
 
     @Override
     public void onPause() {
-        Log.d(getChildTag(), "[onPause]");
+        Log.i(getChildTag(), "[onPause]");
         super.onPause();
     }
 
     @Override
     public void onStop() {
-        Log.d(getChildTag(), "[onStop]");
+        Log.i(getChildTag(), "[onStop]");
         super.onStop();
     }
 
     @Override
     public void onResume() {
-        Log.d(getChildTag(), "[onResume]");
+        Log.i(getChildTag(), "[onResume]");
         super.onResume();
     }
 
     @Override
     public void onDestroyView() {
-        Log.d(getChildTag(), "[onDestroyView]");
+        Log.i(getChildTag(), "[onDestroyView]");
         super.onDestroyView();
     }
 
     @Override
     public void onDestroy() {
-        Log.d(getChildTag(), "[onDestroy]");
+        Log.i(getChildTag(), "[onDestroy]");
         super.onDestroy();
     }
 
     @Override
     public void onDetach() {
-        Log.d(getChildTag(), "[onDetach]");
+        Log.i(getChildTag(), "[onDetach]");
         super.onDetach();
     }
 }
