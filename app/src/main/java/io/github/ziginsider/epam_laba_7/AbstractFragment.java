@@ -83,11 +83,7 @@ public abstract class AbstractFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         Log.i(getChildTag(), "[onCreate]");
         super.onCreate(savedInstanceState);
-        if (savedInstanceState != null) {
-            color = savedInstanceState.getInt(KEY_COLOR);
-        } else {
-            color = getColor();
-        }
+        color = getColor();
     }
 
     @Nullable
